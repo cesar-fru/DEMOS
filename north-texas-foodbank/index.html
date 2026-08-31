@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>North Texas Food Bank (Demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Fundraise Up: the new standard for online giving -->
+<script>
+    (function (w, d, s, n, a) {
+        if (!w[n]) {
+            var l = 'call,catch,on,once,set,then,track,openCheckout'
+                .split(','), i, o = function (n) {
+                    return 'function' == typeof n ? o.l.push([arguments]) && o
+                        : function () { return o.l.push([n, arguments]) && o }
+                }, t = d.getElementsByTagName(s)[0],
+                j = d.createElement(s); j.async = !0; j.src = 'https://cdn.fundraiseup.com/widget/' + a + '';
+            t.parentNode.insertBefore(j, t); o.s = Date.now(); o.v = 5; o.h = w.location.href; o.l = [];
+            for (i = 0; i < 8; i++)o[l[i]] = o(l[i]); w[n] = o
+        }
+    })(window, document, 'script', 'FundraiseUp', 'AXMHWWZK');
+    window.fundraiseup_livemode = false;
+</script>
+<!-- End Fundraise Up -->
+
+<style>
+  :root{
+    --green:#53682b;
+    --green-dark:#40501f;
+    --orange:#d67900;
+    --blue:#006b9d;
+    --text:#212121;
+    --grey-bg:#f4f4f0;
+    --cream:#faf9f5;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Poppins',Verdana,Arial,sans-serif;color:var(--text);background:#fff;line-height:1.6;}
+  h1,h2,h3,h4{font-family:'Poppins',Verdana,Arial,sans-serif;font-weight:700;color:var(--green);margin:0 0 14px;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1220px;margin:0 auto;padding:0 24px;}
+  ul{list-style:none;margin:0;padding:0;}
+  button{font-family:inherit;cursor:pointer;}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 28px;border-radius:4px;font-weight:700;font-size:14px;border:none;letter-spacing:.3px;cursor:pointer;text-transform:uppercase;}
+  .btn-orange{background:var(--orange);color:#fff;}
+  .btn-orange:hover{background:#b96700;}
+  .btn-green{background:var(--green);color:#fff;}
+  .btn-green:hover{background:var(--green-dark);}
+  .btn-outline{background:transparent;color:var(--green);border:2px solid var(--green);}
+  .btn-outline:hover{background:var(--green);color:#fff;}
+
+  /* Utility bar */
+  .utility-bar{background:var(--green-dark);color:#fff;font-size:12px;}
+  .utility-bar .wrap{display:flex;justify-content:flex-end;align-items:center;gap:22px;height:34px;flex-wrap:wrap;}
+  .utility-bar a{color:#e7e9de;font-weight:600;letter-spacing:.4px;}
+  .utility-bar a:hover{color:#fff;}
+  .lang-select{background:transparent;color:#e7e9de;border:none;font-size:12px;font-weight:600;}
+  .a11y-icon{width:16px;height:16px;stroke:#e7e9de;fill:none;}
+
+  /* Header */
+  header.main-header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:100;}
+  .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;gap:24px;flex-wrap:wrap;}
+  .logo img{height:64px;width:auto;}
+  nav.primary-nav{flex:1;}
+  nav.primary-nav > ul{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;}
+  nav.primary-nav > ul > li > a{font-weight:600;font-size:15px;color:#333;text-transform:uppercase;letter-spacing:.3px;}
+  nav.primary-nav > ul > li > a:hover{color:var(--green);}
+  .header-actions{display:flex;align-items:center;gap:16px;flex-shrink:0;}
+  .menu-toggle{display:none;background:none;border:none;}
+  .menu-toggle svg{width:26px;height:26px;fill:var(--green);}
+
+  /* Hero */
+  .hero{position:relative;color:#fff;min-height:420px;display:flex;align-items:center;background:#333 center/cover no-repeat;}
+  .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,25,10,.78),rgba(20,25,10,.25));}
+  .hero-inner{position:relative;z-index:1;padding:60px 0;max-width:620px;}
+  .hero h1{color:#fff;font-size:36px;line-height:1.2;}
+  .hero p{font-size:17px;color:#f1f1e8;max-width:520px;}
+
+  /* Assistance strip */
+  .assist-strip{background:var(--green);color:#fff;padding:30px 0;text-align:center;}
+  .assist-strip h2{color:#fff;font-size:24px;margin-bottom:16px;}
+  .assist-links{display:flex;justify-content:center;gap:36px;flex-wrap:wrap;}
+  .assist-links a{color:#cfe0ff;font-weight:700;font-size:14px;text-decoration:underline;}
+  .assist-links a:hover{color:#fff;}
+
+  /* Mission + stats */
+  .mission-section{padding:60px 0;text-align:center;}
+  .mission-section h2{font-size:26px;max-width:760px;margin:0 auto 40px;}
+  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
+  .stat-card{padding:0 10px;}
+  .stat-card img{height:90px;margin:0 auto 16px;object-fit:contain;}
+  .stat-card .stat-num{font-size:44px;font-weight:800;color:var(--green);}
+  .stat-card .stat-label{font-size:14px;color:#555;max-width:260px;margin:6px auto 0;}
+
+  /* News */
+  .news-section{background:var(--grey-bg);padding:64px 0;}
+  .news-head{text-align:center;margin-bottom:40px;}
+  .news-head h2{font-size:28px;}
+  .news-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-bottom:36px;}
+  .card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.07);display:flex;flex-direction:column;}
+  .card img{width:100%;height:150px;object-fit:cover;}
+  .card-body{padding:16px 18px;flex:1;display:flex;flex-direction:column;}
+  .card-date{font-size:11px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:6px;}
+  .card h3{font-size:15px;color:var(--green);margin-bottom:8px;line-height:1.3;}
+  .card p{font-size:13px;color:#666;flex:1;}
+  .card .read-more{font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;margin-top:10px;}
+  .news-actions{text-align:center;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+  /* Footer */
+  footer{background:var(--cream);padding:56px 0 0;}
+  .footer-top{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px;padding-bottom:40px;border-bottom:1px solid #e3e0d4;}
+  .footer-top h4{font-size:13px;letter-spacing:.5px;color:var(--green);margin-bottom:14px;text-transform:uppercase;}
+  .footer-top li{margin-bottom:9px;font-size:14px;}
+  .footer-top a:hover{color:var(--orange);}
+  .footer-social{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;}
+  .footer-social a{width:32px;height:32px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;}
+  .footer-social svg{width:15px;height:15px;fill:#fff;}
+  .footer-badges{display:flex;gap:20px;align-items:center;margin-top:18px;}
+  .footer-badges img{height:56px;width:auto;object-fit:contain;}
+  .footer-bottom{padding:22px 0 30px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:12px;color:#777;}
+  .footer-legal-links{display:flex;gap:18px;flex-wrap:wrap;}
+  .footer-legal-links a:hover{color:var(--green);}
+
+  @media(max-width:960px){
+    .header-inner{flex-wrap:wrap;}
+    nav.primary-nav{order:3;flex-basis:100%;display:none;}
+    nav.primary-nav.open{display:block;}
+    nav.primary-nav > ul{justify-content:flex-start;flex-direction:column;gap:0;padding:14px 0;}
+    nav.primary-nav > ul > li > a{display:block;padding:10px 0;border-bottom:1px solid #eee;}
+    .menu-toggle{display:block;}
+    .stats-grid{grid-template-columns:1fr;}
+    .news-grid{grid-template-columns:1fr 1fr;}
+    .footer-top{grid-template-columns:1fr 1fr;}
+    .assist-links{flex-direction:column;gap:14px;}
+  }
+  @media(max-width:600px){
+    .news-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+    .hero h1{font-size:28px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- Donate button snippet (provided) -->
+<a href="#XSTKJPBS" style="display: none"></a>
+
+<div class="utility-bar">
+  <div class="wrap">
+    <a href="#">Partner Portal</a>
+    <a href="#">About Us</a>
+    <a href="#news">News</a>
+    <select class="lang-select" aria-label="Choose language" onchange="">
+      <option>English</option>
+      <option>Spanish</option>
+      <option>Vietnamese</option>
+      <option>Korean</option>
+      <option>Hindi</option>
+      <option>Chinese</option>
+    </select>
+    <button type="button" aria-label="Accessibility Menu" style="background:none;border:none;padding:0;">
+      <svg class="a11y-icon" viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="4" r="1.6"/><path d="M4 8h16M12 8v13M8 12l8-1M8 21l2-6M16 21l-2-6"/></svg>
+    </button>
+  </div>
+</div>
+
+<header class="main-header">
+  <div class="header-inner wrap">
+    <a class="logo" href="index.html" aria-label="North Texas Food Bank — home">
+      <img src="https://ntfb.org/wp-content/uploads/2022/10/NTFB-logo.jpeg" alt="North Texas Food Bank">
+    </a>
+    <nav class="primary-nav" id="primaryNav">
+      <ul>
+        <li><a href="#food-assistance">Food Assistance</a></li>
+        <li><a href="#ways-to-give">Donate</a></li>
+        <li><a href="#get-involved">Get Involved</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button class="btn btn-orange" onclick="FundraiseUp('openCheckout')">Donate</button>
+      <button class="menu-toggle" aria-label="Toggle menu" onclick="document.getElementById('primaryNav').classList.toggle('open')">
+        <svg viewBox="0 0 24 24"><rect y="4" width="24" height="2.5" rx="1.25"/><rect y="11" width="24" height="2.5" rx="1.25"/><rect y="18" width="24" height="2.5" rx="1.25"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" style="background-image:url('https://ntfb.org/wp-content/uploads/2026/08/NTFB110590_Sep_NTXGD_HP_Banner_Image_v01-1.jpg')">
+    <div class="wrap">
+      <div class="hero-inner">
+        <h1>Get Ready for North Texas Giving Day!</h1>
+        <p>Join us for North Texas Giving Day and help double the impact of every gift. Support given by September 17 will help provide twice as many nourishing meals for our neighbors facing hunger.</p>
+        <div style="margin-top:24px;">
+          <button class="btn btn-orange" onclick="FundraiseUp('openCheckout')">Give Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="assist-strip" id="food-assistance">
+    <div class="wrap">
+      <h2>Need Food Assistance?</h2>
+      <div class="assist-links">
+        <a href="#">Mobile Pantry Schedule</a>
+        <a href="#">Find a Food Pantry</a>
+        <a href="#">View SNAP Information</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mission-section">
+    <div class="wrap">
+      <h2>Closing the hunger gap in North Texas by providing access to nutritious food</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <img src="https://ntfb.org/wp-content/uploads/2025/05/1in6-1.png" alt="1 in 6 icon">
+          <div class="stat-num">1 in 6</div>
+          <div class="stat-label">744,000 North Texans are food insecure</div>
+        </div>
+        <div class="stat-card">
+          <img src="https://ntfb.org/wp-content/uploads/2023/10/Screenshot-2023-10-09-at-5.32.32-PM.png" alt="Meals provided icon">
+          <div class="stat-num">116 million</div>
+          <div class="stat-label">Physical meals provided in 2025 fiscal year</div>
+        </div>
+        <div class="stat-card">
+          <img src="https://ntfb.org/wp-content/uploads/2024/12/Small-Map.png" alt="Service area map">
+          <div class="stat-num">9,200</div>
+          <div class="stat-label">Square miles covered in our 12-county service area</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="news-section" id="news">
+    <div class="wrap">
+      <div class="news-head">
+        <h2>News &amp; Events</h2>
+      </div>
+      <div class="news-grid">
+        <article class="card">
+          <img src="https://ntfb.org/wp-content/uploads/bb-plugin/cache/DSC07933-760x760-square-8294142ae074252c87cd59f77e894d88-.jpg" alt="CANstruction Dallas">
+          <div class="card-body">
+            <span class="card-date">August 29, 2026</span>
+            <h3>CANstruction Dallas Returns Aug. 29-Sept. 13</h3>
+            <p>This year's showcase features 29 structures built around a super-villain theme, with every can and dollar raised supporting North Texas Food Bank.</p>
+            <a class="read-more" href="#">Read More</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://ntfb.org/wp-content/uploads/bb-plugin/cache/DSC07861-1-760x760-square-95f17c7efa08d39e05d11c35f318e68c-.jpg" alt="Hunger Action Month">
+          <div class="card-body">
+            <span class="card-date">August 28, 2026</span>
+            <h3>North Texas Food Bank Urges Community to Get Involved This Hunger Action Month</h3>
+            <p>September's Hunger Action Month spotlights the urgent needs of 800,000 North Texans, with countless ways for the community to help.</p>
+            <a class="read-more" href="#">Read More</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://ntfb.org/wp-content/uploads/2026/08/NTFB_May2026_003-Carolnetta.jpg" alt="Garland ISD School Pantry">
+          <div class="card-body">
+            <span class="card-date">August 12, 2026</span>
+            <h3>Garland ISD School Pantry Supports Students, Staff and Community</h3>
+            <p>NTFB school pantries distribute nearly 3 million meals a year, helping teachers see the difference when students have enough to eat.</p>
+            <a class="read-more" href="#">Read More</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://ntfb.org/wp-content/uploads/bb-plugin/cache/DSC03957-760x760-square-b6aa404ad5b72677281a4c45c2280501-.jpg" alt="NTFB Kids Camp">
+          <div class="card-body">
+            <span class="card-date">August 11, 2026</span>
+            <h3>NTFB Kids Camp Equips the Next Generation of Hunger Fighters</h3>
+            <p>This year's camp registrations helped provide access to nearly 25,000 meals for North Texans facing hunger.</p>
+            <a class="read-more" href="#">Read More</a>
+          </div>
+        </article>
+      </div>
+      <div class="news-actions">
+        <a class="btn btn-outline" href="#">All Events</a>
+        <a class="btn btn-outline" href="#">All News</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="get-involved">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <h4>Contact Us</h4>
+        <ul>
+          <li><a href="tel:214-330-1396">214.330.1396</a></li>
+          <li><a href="mailto:info@ntfb.org">info@ntfb.org</a></li>
+          <li><a href="#">Department Contacts</a></li>
+        </ul>
+        <div class="footer-badges">
+          <img src="https://ntfb.org/wp-content/uploads/2020/02/Four-Star-Rating-Badge_2026.png" alt="Charity Navigator Four-Star Rating">
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#ways-to-give">Donate</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#news">The Feed: Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get Involved</h4>
+        <ul>
+          <li><a href="#">Our Feeding Network</a></li>
+          <li><a href="#">Partner Portal</a></li>
+          <li><a href="#">Volunteer</a></li>
+          <li><a href="#">Join Our Team</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Stay Connected</h4>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.25-1.5 1.55-1.5H16.7V3.7c-.28-.04-1.24-.12-2.36-.12-2.34 0-3.94 1.43-3.94 4.04V10H7.7v3.1h2.7V21h3.1z"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M4 4l7.2 9.6L4.4 20H7l5-5.6L16 20h4l-7.5-10L19.6 4H17l-4.6 5.2L8 4z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c2.7 0 3 0 4.1.06 2.7.12 4 1.44 4.1 4.1.06 1.1.06 1.4.06 4.1s0 3-.06 4.1c-.12 2.65-1.4 4-4.1 4.1-1.1.06-1.4.06-4.1.06s-3 0-4.1-.06c-2.7-.12-4-1.44-4.1-4.1C3.7 13.5 3.7 13.2 3.7 10.5s0-3 .06-4.1c.12-2.66 1.4-4 4.1-4.1C9 2.2 9.3 2.2 12 2.2zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.2-8.4a1.17 1.17 0 1 0 0-2.34 1.17 1.17 0 0 0 0 2.34z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9.5 9H13v1.7h.05c.5-.9 1.7-1.9 3.5-1.9 3.7 0 4.4 2.4 4.4 5.6V21h-4v-5.7c0-1.4 0-3.1-1.9-3.1s-2.2 1.5-2.2 3v5.8h-4V9z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22 12s0-3.2-.4-4.7a2.9 2.9 0 0 0-2-2C17.9 5 12 5 12 5s-5.9 0-7.6.3a2.9 2.9 0 0 0-2 2C2 8.8 2 12 2 12s0 3.2.4 4.7c.2 1 1 1.8 2 2C6.1 19 12 19 12 19s5.9 0 7.6-.3a2.9 2.9 0 0 0 2-2C22 15.2 22 12 22 12zM10 15.4V8.6l6 3.4z"/></svg></a>
+        </div>
+        <p style="font-size:12px;color:#777;margin-top:14px;">Proud member of Feeding America.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 North Texas Food Bank. This is an unofficial demo page created for illustrative purposes.</span>
+      <div class="footer-legal-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">USDA Nondiscrimination Statement</a>
+        <a href="#">Ethics</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
