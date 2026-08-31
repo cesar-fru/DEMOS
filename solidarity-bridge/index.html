@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solidarity Bridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold:#f7b733;
+    --gold-dark:#e8a91f;
+    --teal:#4bb8c9;
+    --teal-dark:#3aa3b4;
+    --cream:#fdf3dc;
+    --paleblue:#e8f4f4;
+    --maroon:#a02a3a;
+    --dark:#333333;
+    --charcoal:#2c2c2c;
+    --heading-font:'Baloo 2', sans-serif;
+    --body-font:'Nunito Sans', sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:var(--body-font);color:var(--dark);background:#fff;line-height:1.5;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  h1,h2,h3{font-family:var(--heading-font);font-weight:700;}
+  .container{max-width:1200px;margin:0 auto;padding:0 40px;}
+
+  /* HEADER */
+  header{position:relative;z-index:100;background:#fcfcfc;border-bottom:1px solid #eee;}
+  .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 40px;max-width:1400px;margin:0 auto;}
+  .logo img{height:40px;}
+  nav.primary-nav{display:flex;align-items:center;gap:30px;}
+  nav.primary-nav > ul{display:flex;list-style:none;gap:28px;}
+  nav.primary-nav > ul > li{position:relative;}
+  nav.primary-nav > ul > li > a{font-size:13px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--charcoal);padding:8px 0;display:block;}
+  nav.primary-nav > ul > li:hover > a{color:var(--teal-dark);}
+  .dropdown{display:none;position:absolute;top:100%;left:0;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.12);min-width:230px;padding:10px 0;border-radius:2px;}
+  nav.primary-nav > ul > li:hover .dropdown{display:block;}
+  .dropdown a{display:block;padding:9px 20px;font-size:13px;color:var(--charcoal);white-space:nowrap;}
+  .dropdown a:hover{background:var(--cream);color:var(--maroon);}
+  .btn-donate-nav{background:var(--gold);color:var(--charcoal);font-weight:800;font-size:13px;letter-spacing:.05em;padding:12px 26px;border-radius:2px;text-transform:uppercase;}
+  .btn-donate-nav:hover{background:var(--gold-dark);}
+
+  /* HERO */
+  .hero{position:relative;min-height:640px;display:flex;align-items:center;background:#333 url('https://images.squarespace-cdn.com/content/v1/68af914ea0a5a046cf93dc6a/73aa41dc-f012-4b3b-9c22-0388b6cf4624/DSC03311.jpg') center/cover no-repeat;}
+  .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,20,20,.55) 0%,rgba(20,20,20,.15) 60%);}
+  .hero-content{position:relative;z-index:2;padding:60px 40px;max-width:1400px;margin:0 auto;width:100%;}
+  .hero-content h1{color:var(--gold);font-size:64px;line-height:1.05;max-width:700px;margin-bottom:30px;}
+  .btn-hero{display:inline-block;background:var(--gold);color:var(--charcoal);font-weight:800;font-size:14px;letter-spacing:.05em;text-transform:uppercase;padding:18px 38px;border-radius:2px;}
+  .btn-hero:hover{background:#fff;}
+
+  /* BELIEVE SECTION */
+  .believe{background:var(--cream);padding:90px 40px;}
+  .believe-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center;}
+  .believe h2{font-size:46px;line-height:1.15;color:var(--charcoal);}
+  .believe p{font-size:17px;margin-bottom:16px;color:#444;}
+
+  /* MODEL BANNER */
+  .model-banner{position:relative;min-height:480px;display:flex;align-items:center;background:#222 url('https://images.squarespace-cdn.com/content/v1/68af914ea0a5a046cf93dc6a/64d7aefc-c1d1-4c54-a346-9155d3c7fbdb/DSC04193.jpg') center/cover no-repeat;text-align:center;justify-content:center;}
+  .model-banner::before{content:'';position:absolute;inset:0;background:rgba(10,10,10,.4);}
+  .model-content{position:relative;z-index:2;padding:40px;}
+  .model-content h2{color:var(--gold);font-size:48px;line-height:1.2;margin-bottom:26px;}
+  .btn-outline-gold{display:inline-block;background:var(--gold);color:var(--charcoal);font-weight:800;font-size:13px;letter-spacing:.05em;text-transform:uppercase;padding:15px 32px;border-radius:2px;}
+
+  /* STATS */
+  .stats{background:var(--paleblue);padding:60px 40px;}
+  .stats-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .stat-card{background:var(--teal);color:#fff;text-align:center;padding:36px 20px;border-radius:2px;}
+  .stat-card img{height:64px;margin:0 auto 18px;filter:brightness(0) invert(1) opacity(.9);}
+  .stat-card .num{font-size:38px;font-weight:800;font-family:var(--heading-font);color:var(--charcoal);}
+  .stat-card .label{font-size:15px;margin-top:6px;color:#2c2c2c;}
+
+  /* MAP */
+  .map-section{padding:70px 40px;text-align:center;}
+  .map-section img{max-width:520px;margin:0 auto;}
+
+  /* UPDATES */
+  .updates{background:var(--cream);padding:80px 0 90px;}
+  .updates-head{max-width:1200px;margin:0 auto 40px;padding:0 40px;}
+  .updates h2{color:var(--gold-dark);font-size:44px;}
+  .updates-grid{max-width:1300px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .update-card{background:#fff;border-radius:4px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.06);}
+  .update-thumb{height:150px;background:linear-gradient(135deg,var(--teal),var(--gold));display:flex;align-items:center;justify-content:center;}
+  .update-thumb svg{width:40px;height:40px;stroke:#fff;fill:none;stroke-width:1.6;}
+  .update-body{padding:18px 20px 22px;}
+  .update-date{font-size:12px;color:#999;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;}
+  .update-body h3{font-size:16px;line-height:1.3;color:var(--charcoal);margin-bottom:10px;}
+  .update-body p{font-size:13.5px;color:#666;margin-bottom:10px;}
+  .update-body a{font-size:13px;font-weight:700;color:var(--maroon);}
+
+  /* SUBSCRIBE */
+  .subscribe{background:#fff;padding:70px 40px;text-align:center;}
+  .subscribe h2{font-size:32px;margin-bottom:8px;color:var(--charcoal);}
+  .subscribe p{color:#666;margin-bottom:24px;}
+  .subscribe-form{display:flex;max-width:420px;margin:0 auto;gap:10px;}
+  .subscribe-form input{flex:1;padding:14px 16px;border:1px solid #ccc;border-radius:2px;font-size:14px;}
+  .subscribe-form button{background:var(--teal);color:#fff;border:none;padding:14px 24px;font-weight:800;font-size:13px;letter-spacing:.04em;text-transform:uppercase;border-radius:2px;cursor:pointer;}
+  .subscribe .fine{font-size:12px;color:#999;margin-top:14px;}
+
+  /* FOOTER */
+  footer{background:var(--charcoal);color:#ddd;padding:60px 40px 30px;}
+  .footer-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr 1.3fr;gap:30px;}
+  .footer-col h4{color:#fff;font-size:15px;margin-bottom:14px;}
+  .footer-col a{display:block;font-size:13.5px;color:#bbb;margin-bottom:8px;text-decoration:underline;}
+  .footer-col a:hover{color:#fff;}
+  .footer-addr{font-size:13.5px;color:#bbb;line-height:1.7;margin-top:6px;}
+  .footer-social{display:flex;gap:10px;margin-top:20px;}
+  .footer-social a{width:32px;height:32px;border-radius:50%;background:#fff;color:#333;display:flex;align-items:center;justify-content:center;font-size:14px;}
+  .subscribe-form2{display:flex;gap:8px;margin-top:14px;}
+  .subscribe-form2 input{flex:1;padding:12px;border:none;border-radius:2px;font-size:13px;}
+  .subscribe-form2 button{background:var(--teal);color:#fff;border:none;padding:12px 18px;font-weight:800;font-size:12px;letter-spacing:.04em;text-transform:uppercase;border-radius:2px;cursor:pointer;white-space:nowrap;}
+  .footer-bottom{text-align:center;font-size:12.5px;color:#999;margin-top:50px;padding-top:24px;border-top:1px solid #444;}
+  .footer-bottom a{color:#bbb;text-decoration:underline;}
+
+  @media(max-width:900px){
+    nav.primary-nav > ul{display:none;}
+    .hero-content h1{font-size:42px;}
+    .believe-grid{grid-template-columns:1fr;}
+    .believe h2{font-size:32px;}
+    .stats-grid{grid-template-columns:1fr;}
+    .updates-grid{grid-template-columns:1fr 1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .model-content h2{font-size:34px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a class="logo" href="index.html"><img src="https://images.squarespace-cdn.com/content/v1/68af914ea0a5a046cf93dc6a/1756336708067-EH64NK7B95XX1LHERKDD/new-logo.png" alt="Solidarity Bridge"></a>
+    <nav class="primary-nav">
+      <ul>
+        <li><a href="#">About Us</a>
+          <div class="dropdown">
+            <a href="#">Model &amp; Values</a>
+            <a href="#">History</a>
+            <a href="#">Leadership</a>
+            <a href="#">Financials</a>
+          </div>
+        </li>
+        <li><a href="#">What We Do</a>
+          <div class="dropdown">
+            <a href="#">General Surgery</a>
+            <a href="#">Heart Surgery</a>
+            <a href="#">Gynecologic Surgery</a>
+            <a href="#">Neurosurgery &amp; Neurology Institute</a>
+            <a href="#">Medical Equipping</a>
+          </div>
+        </li>
+        <li><a href="#">Our Stories</a>
+          <div class="dropdown">
+            <a href="#">Blog</a>
+            <a href="#">Videos</a>
+            <a href="#">In the news</a>
+          </div>
+        </li>
+        <li><a href="#">Get Involved</a>
+          <div class="dropdown">
+            <a href="#">Volunteer</a>
+            <a href="#">Connect your parish</a>
+            <a href="#">Donate medical supplies</a>
+          </div>
+        </li>
+        <li><a href="#">Events &amp; Trips</a>
+          <div class="dropdown">
+            <a href="#">Trip calendar</a>
+            <a href="#">Fiesta Gala 2027</a>
+            <a href="ways-to-give/index.html">Ways to give</a>
+          </div>
+        </li>
+        <li><a href="ways-to-give/index.html">Ways to Give</a></li>
+      </ul>
+      <a class="btn-donate-nav" href="ways-to-give/index.html">Donate</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Increasing access to surgery</h1>
+    <a class="btn-hero" href="ways-to-give/index.html">Donate</a>
+  </div>
+</section>
+
+<section class="believe">
+  <div class="believe-grid">
+    <h2>We believe that healthcare is a human right.</h2>
+    <div>
+      <p>Working in solidarity, we team up with communities across Bolivia and Paraguay to expand access to safe, affordable surgical and essential health services.</p>
+      <p>An estimated 13 million people across these two countries still lack access to timely, affordable surgery.</p>
+    </div>
+  </div>
+</section>
+
+<section class="model-banner">
+  <div class="model-content">
+    <h2>Learn about our sustainable model</h2>
+    <a class="btn-outline-gold" href="#">Learn More</a>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <img src="https://images.squarespace-cdn.com/content/v1/68af914ea0a5a046cf93dc6a/729b7063-cfc3-4431-ae44-92213b67fab1/31-healthcare.png" alt="">
+      <div class="num">30,000+</div>
+      <div class="label">Patients served</div>
+    </div>
+    <div class="stat-card">
+      <img src="https://images.squarespace-cdn.com/content/v1/68af914ea0a5a046cf93dc6a/5237423f-580a-4bf0-a38d-36f819fb22c1/31-diagnostic.png" alt="">
+      <div class="num">$48M+</div>
+      <div class="label">Donated equipment and supplies</div>
+    </div>
+    <div class="stat-card">
+      <img src="https://images.squarespace-cdn.com/content/v1/68af914ea0a5a046cf93dc6a/55e3e10d-b9b9-4050-b3b4-1c9b13fd4917/31-helping.png" alt="">
+      <div class="num">120+</div>
+      <div class="label">South American medical partners</div>
+    </div>
+  </div>
+</section>
+
+<section class="map-section">
+  <img src="https://images.squarespace-cdn.com/content/v1/68af914ea0a5a046cf93dc6a/7608f4c9-7d74-4ef8-bc0a-aae29de5949b/where-we-work1500-2.png" alt="Map of where Solidarity Bridge works in Bolivia and Paraguay">
+</section>
+
+<section class="updates">
+  <div class="updates-head">
+    <h2>Our Latest Updates</h2>
+  </div>
+  <div class="updates-grid">
+    <div class="update-card">
+      <div class="update-thumb"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div class="update-body">
+        <div class="update-date">July 28, 2026</div>
+        <h3>Bridging Connections between Families of Pediatric Epilepsy Patients</h3>
+        <p>Mission trips create lasting community between families whose children are awaiting epilepsy surgery and those whose children have already had it.</p>
+        <a href="#">Read more &rarr;</a>
+      </div>
+    </div>
+    <div class="update-card">
+      <div class="update-thumb"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21l7.78-7.55 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      <div class="update-body">
+        <div class="update-date">July 24, 2026</div>
+        <h3>Making Your Legacy Gift to Solidarity Bridge</h3>
+        <p>August is National Make-A-Will Month — a good moment to consider including Solidarity Bridge in your estate plans.</p>
+        <a href="#">Read more &rarr;</a>
+      </div>
+    </div>
+    <div class="update-card">
+      <div class="update-thumb"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+      <div class="update-body">
+        <div class="update-date">July 24, 2026</div>
+        <h3>Leading the Way: Bolivian Champions Advancing Pediatric Epilepsy Care</h3>
+        <p>Sustainable progress takes root when local leaders carry the work forward — and our pediatric epilepsy partners exemplify that.</p>
+        <a href="#">Read more &rarr;</a>
+      </div>
+    </div>
+    <div class="update-card">
+      <div class="update-thumb"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="M12 6v6l4 2"/></svg></div>
+      <div class="update-body">
+        <div class="update-date">July 9, 2026</div>
+        <h3>Neurosurgery Resident Education That Crosses Borders in Both Directions</h3>
+        <p>Now in its second year, our U.S. neurosurgical observership program continues to build cross-border medical training partnerships.</p>
+        <a href="#">Read more &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="subscribe">
+  <h2>Subscribe</h2>
+  <p>Sign up with your email address to receive news and updates.</p>
+  <form class="subscribe-form" onsubmit="return false;">
+    <input type="email" placeholder="Email Address">
+    <button type="submit">Sign Up</button>
+  </form>
+  <div class="fine">We respect your privacy.</div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Get to Know Us</h4>
+      <a href="#">Model &amp; Values</a>
+      <a href="#">History</a>
+      <a href="#">Blog</a>
+      <a href="#">Financials</a>
+    </div>
+    <div class="footer-col">
+      <h4>Take Action</h4>
+      <a href="#">Volunteer</a>
+      <a href="ways-to-give/index.html">Donate</a>
+      <a href="#">Donate Medical Supplies</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="#">Contact Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Privacy Policy</a>
+      <div class="footer-addr">
+        Solidarity Bridge<br>
+        8707 Skokie Blvd, Suite 310<br>
+        Skokie, IL 60077<br>
+        United States<br><br>
+        (847) 328-7748
+      </div>
+      <div class="footer-social">
+        <a href="#">f</a><a href="#">ig</a><a href="#">yt</a><a href="#">in</a><a href="#">@</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 style="font-size:19px;">Subscribe</h4>
+      <p style="font-size:13px;color:#bbb;">Sign up with your email address to receive news and updates.</p>
+      <form class="subscribe-form2" onsubmit="return false;">
+        <input type="email" placeholder="Email Address">
+        <button type="submit">Sign Up</button>
+      </form>
+      <div class="fine" style="margin-top:10px;">We respect your privacy.</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    Solidarity Bridge is a registered 501(c)3 charity<br>
+    <a href="index.html">HOME</a> | <a href="#">PRIVACY POLICY</a> | <a href="#">CONTACT US</a>
+  </div>
+</footer>
+
+</body>
+</html>
