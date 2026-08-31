@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ways to give — Solidarity Bridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold:#f7b733;
+    --gold-dark:#e8a91f;
+    --teal:#4bb8c9;
+    --teal-dark:#3aa3b4;
+    --cream:#fdf3dc;
+    --paleblue:#e8f4f4;
+    --maroon:#a02a3a;
+    --dark:#333333;
+    --charcoal:#2c2c2c;
+    --heading-font:'Baloo 2', sans-serif;
+    --body-font:'Nunito Sans', sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:var(--body-font);color:var(--dark);background:#fff;line-height:1.5;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  h1,h2,h3{font-family:var(--heading-font);font-weight:700;}
+  .container{max-width:1200px;margin:0 auto;padding:0 40px;}
+
+  /* HEADER (shared) */
+  header{position:relative;z-index:100;background:#fcfcfc;border-bottom:1px solid #eee;}
+  .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 40px;max-width:1400px;margin:0 auto;}
+  .logo img{height:40px;}
+  nav.primary-nav{display:flex;align-items:center;gap:30px;}
+  nav.primary-nav > ul{display:flex;list-style:none;gap:28px;}
+  nav.primary-nav > ul > li{position:relative;}
+  nav.primary-nav > ul > li > a{font-size:13px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--charcoal);padding:8px 0;display:block;}
+  nav.primary-nav > ul > li:hover > a, nav.primary-nav > ul > li.active > a{color:var(--teal-dark);}
+  .dropdown{display:none;position:absolute;top:100%;left:0;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.12);min-width:230px;padding:10px 0;border-radius:2px;}
+  nav.primary-nav > ul > li:hover .dropdown{display:block;}
+  .dropdown a{display:block;padding:9px 20px;font-size:13px;color:var(--charcoal);white-space:nowrap;}
+  .dropdown a:hover{background:var(--cream);color:var(--maroon);}
+  .btn-donate-nav{background:var(--gold);color:var(--charcoal);font-weight:800;font-size:13px;letter-spacing:.05em;padding:12px 26px;border-radius:2px;text-transform:uppercase;}
+  .btn-donate-nav:hover{background:var(--gold-dark);}
+
+  /* PAGE HERO IMAGE */
+  .page-hero{height:420px;background:#333 url('https://images.squarespace-cdn.com/content/v1/68af914ea0a5a046cf93dc6a/b6c483f1-9079-4f0b-ba96-4e2a97b48edb/16357524854_2bc349d0d2_o.jpg') center/cover no-repeat;}
+
+  /* GIFT TRANSFORMS */
+  .transform{background:var(--teal);color:#fff;padding:70px 40px;}
+  .transform-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
+  .transform h1{font-size:52px;color:#fff;line-height:1.1;}
+  .transform p{font-size:17px;}
+
+  /* MONTHLY DONATION */
+  .monthly{background:var(--cream);padding:80px 40px 90px;}
+  .monthly-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start;margin-bottom:50px;}
+  .monthly h2{color:var(--gold-dark);font-size:44px;line-height:1.1;}
+  .monthly-intro p{font-size:16px;color:#555;}
+
+  .donate-widget{max-width:1010px;margin:0 auto;background:#fff;border:1px solid #eadfc4;border-radius:4px;padding:24px;}
+  .donate-toggle{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+  .donate-toggle div{text-align:center;padding:14px;border:1px solid #ccc;border-radius:2px;font-weight:700;font-size:14px;}
+  .donate-toggle div.active{border-color:var(--maroon);color:var(--maroon);}
+  .donate-amounts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;}
+  .donate-amounts div{text-align:center;padding:14px;border:1px solid #ccc;border-radius:2px;font-size:14px;}
+  .donate-custom{border:1px solid #ccc;border-radius:2px;padding:14px 16px;margin-bottom:14px;display:flex;justify-content:space-between;color:#999;font-size:14px;}
+  .donate-custom span:first-child{color:#333;font-weight:600;}
+  .donate-dedicate{background:#f4f4f4;text-align:center;padding:14px;border-radius:2px;font-size:14px;margin-bottom:14px;color:#555;}
+  .donate-btn{display:block;text-align:center;background:var(--maroon);color:#fff;font-weight:800;font-size:16px;padding:18px;border-radius:2px;}
+  .donate-btn:hover{background:#87202e;}
+
+  .tier-grid{max-width:1300px;margin:50px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .tier-card{background:var(--gold);border-radius:4px;padding:26px 22px;}
+  .tier-card .amt{font-size:26px;font-weight:800;font-family:var(--heading-font);margin-bottom:10px;color:var(--charcoal);}
+  .tier-card p{font-size:14px;color:#3a2f10;}
+
+  /* MANY WAYS TO GIVE */
+  .ways{background:var(--paleblue);padding:80px 40px;}
+  .ways-head{max-width:1300px;margin:0 auto 50px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .ways-head h2{font-size:44px;color:var(--charcoal);line-height:1.1;}
+  .btn-teal{background:var(--teal);color:#fff;font-weight:800;font-size:13px;letter-spacing:.04em;text-transform:uppercase;padding:14px 24px;border-radius:2px;}
+  .ways-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:50px 40px;}
+  .way-item{display:flex;gap:18px;align-items:flex-start;}
+  .way-icon{width:44px;height:44px;flex:none;fill:var(--charcoal);}
+  .way-item h3{font-size:22px;color:var(--charcoal);margin-bottom:8px;padding-bottom:8px;border-bottom:2px solid var(--maroon);display:inline-block;}
+  .way-item p{font-size:14.5px;color:#555;}
+  .way-item a{color:var(--maroon);text-decoration:underline;}
+
+  /* IN-KIND */
+  .inkind-hero{height:280px;background:#333 url('https://images.squarespace-cdn.com/content/v1/68af914ea0a5a046cf93dc6a/23ec265b-2c59-4258-bfdd-ceb7428077ad/dsc_0288_25943960151_o.jpg') center 30%/cover no-repeat;position:relative;}
+  .inkind-hero::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,.35);}
+  .inkind-hero h2{position:relative;z-index:2;color:#fff;text-align:center;padding-top:110px;font-size:38px;}
+  .inkind{background:#fff;padding:70px 40px;}
+  .inkind-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+  .inkind-col h3{font-size:22px;color:var(--charcoal);margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid var(--maroon);display:inline-block;}
+  .inkind-col p{font-size:14.5px;color:#555;margin-bottom:14px;}
+  .inkind-col ul{margin:0 0 14px 18px;font-size:14.5px;color:#555;}
+  .inkind-col a.link-btn{color:var(--maroon);font-weight:700;text-decoration:underline;}
+
+  /* RESPONSIBLE */
+  .responsible{background:var(--cream);padding:80px 40px;}
+  .resp-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .resp-grid h2{font-size:34px;color:var(--charcoal);margin-bottom:16px;}
+  .resp-grid p{font-size:15.5px;color:#555;margin-bottom:18px;}
+  .resp-grid img{border-radius:4px;}
+  .btn-maroon-outline{display:inline-block;border:2px solid var(--maroon);color:var(--maroon);font-weight:800;font-size:13px;letter-spacing:.04em;text-transform:uppercase;padding:12px 24px;border-radius:2px;}
+
+  /* SUBSCRIBE */
+  .subscribe{background:#fff;padding:70px 40px;text-align:center;}
+  .subscribe h2{font-size:32px;margin-bottom:8px;color:var(--charcoal);}
+  .subscribe p{color:#666;margin-bottom:24px;}
+  .subscribe-form{display:flex;max-width:420px;margin:0 auto;gap:10px;}
+  .subscribe-form input{flex:1;padding:14px 16px;border:1px solid #ccc;border-radius:2px;font-size:14px;}
+  .subscribe-form button{background:var(--teal);color:#fff;border:none;padding:14px 24px;font-weight:800;font-size:13px;letter-spacing:.04em;text-transform:uppercase;border-radius:2px;cursor:pointer;}
+  .subscribe .fine{font-size:12px;color:#999;margin-top:14px;}
+
+  /* FOOTER (shared) */
+  footer{background:var(--charcoal);color:#ddd;padding:60px 40px 30px;}
+  .footer-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr 1.3fr;gap:30px;}
+  .footer-col h4{color:#fff;font-size:15px;margin-bottom:14px;}
+  .footer-col a{display:block;font-size:13.5px;color:#bbb;margin-bottom:8px;text-decoration:underline;}
+  .footer-col a:hover{color:#fff;}
+  .footer-addr{font-size:13.5px;color:#bbb;line-height:1.7;margin-top:6px;}
+  .footer-social{display:flex;gap:10px;margin-top:20px;}
+  .footer-social a{width:32px;height:32px;border-radius:50%;background:#fff;color:#333;display:flex;align-items:center;justify-content:center;font-size:14px;}
+  .subscribe-form2{display:flex;gap:8px;margin-top:14px;}
+  .subscribe-form2 input{flex:1;padding:12px;border:none;border-radius:2px;font-size:13px;}
+  .subscribe-form2 button{background:var(--teal);color:#fff;border:none;padding:12px 18px;font-weight:800;font-size:12px;letter-spacing:.04em;text-transform:uppercase;border-radius:2px;cursor:pointer;white-space:nowrap;}
+  .footer-bottom{text-align:center;font-size:12.5px;color:#999;margin-top:50px;padding-top:24px;border-top:1px solid #444;}
+  .footer-bottom a{color:#bbb;text-decoration:underline;}
+
+  @media(max-width:900px){
+    nav.primary-nav > ul{display:none;}
+    .transform-grid, .monthly-grid, .ways-grid, .inkind-grid, .resp-grid{grid-template-columns:1fr;}
+    .transform h1{font-size:36px;}
+    .monthly h2{font-size:32px;}
+    .donate-amounts{grid-template-columns:1fr 1fr;}
+    .tier-grid{grid-template-columns:1fr 1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a class="logo" href="../index.html"><img src="https://images.squarespace-cdn.com/content/v1/68af914ea0a5a046cf93dc6a/1756336708067-EH64NK7B95XX1LHERKDD/new-logo.png" alt="Solidarity Bridge"></a>
+    <nav class="primary-nav">
+      <ul>
+        <li><a href="#">About Us</a>
+          <div class="dropdown">
+            <a href="#">Model &amp; Values</a>
+            <a href="#">History</a>
+            <a href="#">Leadership</a>
+            <a href="#">Financials</a>
+          </div>
+        </li>
+        <li><a href="#">What We Do</a>
+          <div class="dropdown">
+            <a href="#">General Surgery</a>
+            <a href="#">Heart Surgery</a>
+            <a href="#">Gynecologic Surgery</a>
+            <a href="#">Neurosurgery &amp; Neurology Institute</a>
+            <a href="#">Medical Equipping</a>
+          </div>
+        </li>
+        <li><a href="#">Our Stories</a>
+          <div class="dropdown">
+            <a href="#">Blog</a>
+            <a href="#">Videos</a>
+            <a href="#">In the news</a>
+          </div>
+        </li>
+        <li><a href="#">Get Involved</a>
+          <div class="dropdown">
+            <a href="#">Volunteer</a>
+            <a href="#">Connect your parish</a>
+            <a href="#">Donate medical supplies</a>
+          </div>
+        </li>
+        <li><a href="#">Events &amp; Trips</a>
+          <div class="dropdown">
+            <a href="#">Trip calendar</a>
+            <a href="#">Fiesta Gala 2027</a>
+            <a href="index.html">Ways to give</a>
+          </div>
+        </li>
+        <li class="active"><a href="index.html">Ways to Give</a></li>
+      </ul>
+      <a class="btn-donate-nav" href="#">Donate</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero"></div>
+
+<section class="transform">
+  <div class="transform-grid">
+    <h1>Your Gift Transforms Lives</h1>
+    <p>Timely, essential surgical care changes lives and strengthens communities. It also opens the door to partnership and shared learning between visiting medical volunteers and local health professionals. Help us bring surgical care to those who need it most!</p>
+  </div>
+</section>
+
+<section class="monthly">
+  <div class="monthly-grid">
+    <h2>Consider a Monthly Donation</h2>
+    <div class="monthly-intro">
+      <p>Recurring gifts help sustain our year-round programs. Here's a look at the kind of life-changing care different gift levels can provide:</p>
+    </div>
+  </div>
+
+  <div class="donate-widget">
+    <div class="donate-toggle">
+      <div class="active">One-Time</div>
+      <div>Monthly</div>
+    </div>
+    <div class="donate-amounts">
+      <div>$25</div><div>$50</div><div>$100</div><div>$250</div>
+    </div>
+    <div class="donate-custom"><span>Custom amount:</span><span>$ &nbsp; USD</span></div>
+    <div class="donate-dedicate">&#9825; &nbsp; Dedicate This Gift</div>
+    <a class="donate-btn" href="#">Donate</a>
+  </div>
+
+  <div class="tier-grid">
+    <div class="tier-card"><div class="amt">$25/mo</div><p>Medical supplies for one patient surgery</p></div>
+    <div class="tier-card"><div class="amt">$50/mo</div><p>One healing surgery to relieve hernia or gallbladder pain</p></div>
+    <div class="tier-card"><div class="amt">$100/mo</div><p>A life-saving pacemaker for a patient living with Chagas disease</p></div>
+    <div class="tier-card"><div class="amt">$250/mo</div><p>A mobile surgery campaign to reach patients in rural areas</p></div>
+  </div>
+</section>
+
+<section class="ways">
+  <div class="ways-head">
+    <h2>There are Many<br>Ways to Give</h2>
+    <a class="btn-teal" href="#">Contact Us</a>
+  </div>
+  <div class="ways-grid">
+    <div class="way-item">
+      <svg class="way-icon" viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11.5A5.5 5.5 0 0 1 9.5 4c1.7 0 3 1 4 2.5C14.5 5 15.8 4 17.5 4A5.5 5.5 0 0 1 20 9.5C20 15.8 12 21 12 21z"/></svg>
+      <div>
+        <h3>Gift Stock</h3>
+        <p>Solidarity Bridge can receive gifts of stock through our brokerage account.</p>
+      </div>
+    </div>
+    <div class="way-item">
+      <svg class="way-icon" viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11.5A5.5 5.5 0 0 1 9.5 4c1.7 0 3 1 4 2.5C14.5 5 15.8 4 17.5 4A5.5 5.5 0 0 1 20 9.5C20 15.8 12 21 12 21z"/></svg>
+      <div>
+        <h3>Matching Gifts</h3>
+        <p>Many employers match charitable gifts — ask yours whether they offer a matching gift program to double your impact.</p>
+      </div>
+    </div>
+    <div class="way-item">
+      <svg class="way-icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M12 14l2 2"/></svg>
+      <div>
+        <h3>Legacy Gifting</h3>
+        <p>Include Solidarity Bridge in your will or another charitable vehicle to help ensure surgical care remains available for generations of families and communities to come.</p>
+      </div>
+    </div>
+    <div class="way-item">
+      <svg class="way-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+      <div>
+        <h3>Dedicate a Gift</h3>
+        <p>Give in <a href="#">someone's honor</a> or in support of a medical volunteer. We'll let the honoree know of your generous gift, or your gift can be a way to remember a loved one. <a href="#">Donate here.</a></p>
+      </div>
+    </div>
+    <div class="way-item">
+      <svg class="way-icon" viewBox="0 0 24 24"><path d="M3 9l9-6 9 6v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9z"/><path d="M9 20V9h6v11"/></svg>
+      <div>
+        <h3>Gift Through Your Donor Advised Fund</h3>
+        <p>Already set money aside for giving in a donor-advised fund or other charitable account? Consider directing a designation to Solidarity Bridge. <a href="#">Start the process through your DAF account.</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="inkind-hero"><h2>In-kind Donations Make an Impact</h2></div>
+<section class="inkind">
+  <div class="inkind-grid">
+    <div class="inkind-col">
+      <h3>Medical Supplies</h3>
+      <p>Surgical tools and supplies that are common in the U.S. remain out of reach for most people in Bolivia and Paraguay. Donated medical supplies directly strengthen the local hospitals and surgeons who care for our patients.</p>
+      <p>Before donating supplies, please check our Medical Supply Wish List first.</p>
+      <a class="link-btn" href="#">Wish List</a>
+    </div>
+    <div class="inkind-col">
+      <h3>Other Donations</h3>
+      <p>Beyond medical supplies, we're also grateful to accept:</p>
+      <ul>
+        <li>Gently used luggage, which helps us transport supplies on medical trips.</li>
+        <li>Live and silent auction items — goods, services, or experiences around the Chicago area — for our annual Fiesta Gala, our biggest fundraiser of the year.</li>
+      </ul>
+      <a class="link-btn" href="#">Contact us</a>
+    </div>
+  </div>
+</section>
+
+<section class="responsible">
+  <div class="resp-grid">
+    <div>
+      <h2>We Use Your Gift Responsibly</h2>
+      <p>Solidarity Bridge is a registered 501(c)3 nonprofit, rated highly by GuideStar and Charity Navigator, and accredited by the Better Business Bureau. We direct 85% of donations straight to programs — well above the 65% average for national nonprofits — with the rest covering the operating costs that let us reach even more patients.</p>
+      <a class="btn-maroon-outline" href="#">Financials</a>
+    </div>
+    <img src="https://images.squarespace-cdn.com/content/v1/68af914ea0a5a046cf93dc6a/19558eac-110b-4f8e-81ed-2e6d180e65e5/DSC08371.jpg" alt="">
+  </div>
+</section>
+
+<section class="subscribe">
+  <h2>Subscribe</h2>
+  <p>Sign up with your email address to receive news and updates.</p>
+  <form class="subscribe-form" onsubmit="return false;">
+    <input type="email" placeholder="Email Address">
+    <button type="submit">Sign Up</button>
+  </form>
+  <div class="fine">We respect your privacy.</div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Get to Know Us</h4>
+      <a href="#">Model &amp; Values</a>
+      <a href="#">History</a>
+      <a href="#">Blog</a>
+      <a href="#">Financials</a>
+    </div>
+    <div class="footer-col">
+      <h4>Take Action</h4>
+      <a href="#">Volunteer</a>
+      <a href="index.html">Donate</a>
+      <a href="#">Donate Medical Supplies</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="#">Contact Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Privacy Policy</a>
+      <div class="footer-addr">
+        Solidarity Bridge<br>
+        8707 Skokie Blvd, Suite 310<br>
+        Skokie, IL 60077<br>
+        United States<br><br>
+        (847) 328-7748
+      </div>
+      <div class="footer-social">
+        <a href="#">f</a><a href="#">ig</a><a href="#">yt</a><a href="#">in</a><a href="#">@</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 style="font-size:19px;">Subscribe</h4>
+      <p style="font-size:13px;color:#bbb;">Sign up with your email address to receive news and updates.</p>
+      <form class="subscribe-form2" onsubmit="return false;">
+        <input type="email" placeholder="Email Address">
+        <button type="submit">Sign Up</button>
+      </form>
+      <div class="fine" style="margin-top:10px;">We respect your privacy.</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    Solidarity Bridge is a registered 501(c)3 charity<br>
+    <a href="../index.html">HOME</a> | <a href="#">PRIVACY POLICY</a> | <a href="#">CONTACT US</a>
+  </div>
+</footer>
+
+</body>
+</html>
