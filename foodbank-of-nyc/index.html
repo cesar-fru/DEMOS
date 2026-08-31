@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food Bank For NYC (Demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Fundraise Up: the new standard for online giving -->
+<script>
+    (function (w, d, s, n, a) {
+        if (!w[n]) {
+            var l = 'call,catch,on,once,set,then,track,openCheckout'
+                .split(','), i, o = function (n) {
+                    return 'function' == typeof n ? o.l.push([arguments]) && o
+                        : function () { return o.l.push([n, arguments]) && o }
+                }, t = d.getElementsByTagName(s)[0],
+                j = d.createElement(s); j.async = !0; j.src = 'https://cdn.fundraiseup.com/widget/' + a + '';
+            t.parentNode.insertBefore(j, t); o.s = Date.now(); o.v = 5; o.h = w.location.href; o.l = [];
+            for (i = 0; i < 8; i++)o[l[i]] = o(l[i]); w[n] = o
+        }
+    })(window, document, 'script', 'FundraiseUp', 'AXMHWWZK');
+    window.fundraiseup_livemode = false;
+</script>
+<!-- End Fundraise Up -->
+
+<style>
+  :root{
+    --navy:#051f67;
+    --navy-dark:#041238;
+    --orange:#ff5301;
+    --amber:#ffa601;
+    --mint:#cbf1f0;
+    --cream:#f9f8f5;
+    --grey-bg:#f2f3f5;
+    --text:#3a3f4b;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Public Sans',Arial,Helvetica,sans-serif;color:var(--text);background:var(--white);line-height:1.6;}
+  h1,h2,h3,h4{font-family:'Public Sans',Arial,Helvetica,sans-serif;font-weight:800;color:var(--navy);margin:0 0 14px;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 24px;}
+  ul{list-style:none;margin:0;padding:0;}
+  button{font-family:inherit;cursor:pointer;}
+  .eyebrow{font-weight:700;letter-spacing:1.5px;font-size:13px;text-transform:uppercase;color:var(--orange);margin-bottom:10px;display:block;}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 30px;border-radius:50px;font-weight:700;font-size:15px;border:none;letter-spacing:.3px;cursor:pointer;}
+  .btn-orange{background:var(--orange);color:#fff;}
+  .btn-orange:hover{background:#e04a00;}
+  .btn-navy{background:var(--navy);color:#fff;}
+  .btn-navy:hover{background:#03144a;}
+  .btn-outline{background:transparent;color:#fff;border:2px solid #fff;}
+  .btn-outline:hover{background:rgba(255,255,255,.15);}
+  .btn-outline-navy{background:transparent;color:var(--navy);border:2px solid var(--navy);}
+  .btn-outline-navy:hover{background:var(--navy);color:#fff;}
+
+  /* Announcement bar */
+  .announce{background:var(--orange);color:#fff;font-size:14px;font-weight:600;}
+  .announce .wrap{display:flex;align-items:center;justify-content:center;gap:16px;padding:10px 24px;flex-wrap:wrap;text-align:center;}
+  .announce .btn{padding:8px 18px;font-size:13px;background:var(--navy-dark);}
+
+  /* Header */
+  header.main-header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:100;}
+  .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;gap:20px;}
+  .logo img{height:56px;width:auto;}
+  .header-actions{display:flex;align-items:center;gap:14px;}
+  .icon-btn{width:42px;height:42px;border-radius:50%;border:1px solid #ddd;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .icon-btn svg{width:18px;height:18px;stroke:var(--navy);fill:none;}
+  .icon-btn.menu-btn svg{stroke:none;fill:var(--navy);}
+
+  /* Off-canvas nav */
+  .nav-overlay{position:fixed;inset:0;background:rgba(4,18,56,.6);opacity:0;pointer-events:none;transition:opacity .25s;z-index:199;}
+  .nav-overlay.open{opacity:1;pointer-events:auto;}
+  .nav-panel{position:fixed;top:0;right:-380px;width:340px;max-width:88vw;height:100%;background:#fff;z-index:200;transition:right .3s;padding:28px;overflow-y:auto;}
+  .nav-panel.open{right:0;}
+  .nav-panel-close{width:38px;height:38px;border-radius:50%;border:1px solid #ddd;background:#fff;display:flex;align-items:center;justify-content:center;margin-left:auto;margin-bottom:20px;}
+  .nav-panel-close svg{width:16px;height:16px;stroke:var(--navy);fill:none;}
+  .nav-list li{border-bottom:1px solid #eee;}
+  .nav-list a{display:block;padding:16px 4px;font-weight:700;font-size:16px;color:var(--navy);}
+  .nav-list a:hover{color:var(--orange);}
+  .nav-social{display:flex;gap:12px;margin-top:28px;}
+  .nav-social a{width:36px;height:36px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;}
+  .nav-social svg{width:16px;height:16px;fill:#fff;}
+
+  /* Generic two-col section */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:64px 0;}
+  .split.reverse .split-media{order:2;}
+  .split-media img{border-radius:16px;width:100%;height:420px;object-fit:cover;}
+  .split-copy .cap{font-weight:700;letter-spacing:1px;font-size:13px;color:var(--orange);text-transform:uppercase;margin-bottom:10px;}
+  .split-copy h1{font-size:42px;line-height:1.15;}
+  .split-copy h2{font-size:32px;line-height:1.2;}
+  .split-copy p{font-size:17px;color:#555;max-width:520px;}
+
+  .section-mint{background:linear-gradient(180deg,var(--mint) 0%,rgba(255,255,255,0) 100%);}
+
+  /* Stats */
+  .stats-section{padding:70px 0;background:var(--grey-bg);}
+  .stats-intro{max-width:700px;margin:0 auto 40px;text-align:center;}
+  .stats-intro h2{font-size:32px;}
+  .stats-intro p{font-size:17px;color:#555;}
+  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .stat-card{position:relative;border-radius:14px;overflow:hidden;min-height:190px;padding:22px;display:flex;flex-direction:column;justify-content:flex-end;background-size:cover;background-position:center;}
+  .stat-card::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,18,56,.35) 0%,rgba(4,18,56,.88) 100%);}
+  .stat-card .stat-num, .stat-card .stat-label{position:relative;z-index:1;color:#fff;}
+  .stat-card .stat-num{font-size:34px;font-weight:800;}
+  .stat-card .stat-label{font-size:14px;font-weight:500;}
+  .stats-actions{text-align:center;margin-top:40px;}
+
+  /* News */
+  .news-section{padding:70px 0;}
+  .news-head{text-align:center;max-width:700px;margin:0 auto 40px;}
+  .news-head h2{font-size:32px;}
+  .film-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-bottom:26px;}
+  .card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 18px rgba(4,18,56,.08);}
+  .card img{width:100%;height:220px;object-fit:cover;}
+  .card-body{padding:20px 22px;}
+  .tag-pill{display:inline-block;background:var(--mint);color:var(--navy);font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:10px;}
+  .card-date{font-size:12px;color:#888;font-weight:600;margin-bottom:6px;display:block;}
+  .card h3{font-size:19px;margin:0;color:var(--navy);}
+  .impact-banner{background:var(--navy);border-radius:16px;color:#fff;text-align:center;padding:26px;font-weight:800;font-size:18px;letter-spacing:.5px;margin:6px 0 30px;}
+  .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+
+  /* Events (dark) */
+  .events-section{background:var(--navy-dark);color:#fff;padding:70px 0;}
+  .events-inner{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
+  .events-copy h2{color:#fff;font-size:32px;}
+  .events-copy p{color:#c9cfe6;font-size:17px;max-width:440px;}
+  .event-card{background:#fff;border-radius:16px;overflow:hidden;color:var(--text);}
+  .event-card img{height:200px;object-fit:cover;width:100%;}
+  .event-card-body{padding:24px;display:flex;gap:18px;align-items:flex-start;}
+  .event-date{background:var(--orange);color:#fff;border-radius:10px;text-align:center;padding:10px 14px;flex-shrink:0;}
+  .event-date .day{font-size:24px;font-weight:800;line-height:1;}
+  .event-date .month{font-size:12px;font-weight:700;letter-spacing:.5px;}
+  .event-card h3{font-size:18px;margin-bottom:4px;color:var(--navy);}
+  .event-card p{font-size:14px;color:#666;margin-bottom:14px;}
+
+  /* Partnerships */
+  .partners-section{padding:70px 0;text-align:center;}
+  .partners-head{max-width:700px;margin:0 auto 36px;}
+  .partners-head h2{font-size:32px;}
+  .partners-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+  .partner-card{position:relative;border-radius:16px;overflow:hidden;min-height:180px;display:flex;align-items:flex-end;padding:26px;background-size:cover;background-position:center;}
+  .partner-card::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,31,103,.25) 0%,rgba(5,31,103,.85) 100%);}
+  .partner-card span{position:relative;z-index:1;color:#fff;font-weight:800;font-size:20px;text-align:left;}
+
+  /* CTA grid */
+  .cta-section{padding:70px 0;background:var(--grey-bg);text-align:center;}
+  .cta-head{max-width:640px;margin:0 auto 44px;}
+  .cta-head h2{font-size:34px;}
+  .cta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .cta-card{background:#fff;border-radius:14px;padding:30px 20px;}
+  .cta-card .icon{width:56px;height:56px;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;}
+  .cta-card .icon svg{width:26px;height:26px;stroke:var(--navy);fill:none;}
+  .cta-card .cap{font-weight:700;font-size:12px;letter-spacing:1px;color:var(--orange);text-transform:uppercase;margin-bottom:8px;}
+  .cta-card h3{font-size:17px;margin-bottom:16px;}
+  .cta-card a.btn, .cta-card button.btn{width:100%;padding:12px 10px;font-size:14px;}
+
+  /* Footer */
+  footer{background:var(--cream);}
+  .footer-top{padding:56px 0 30px;text-align:center;}
+  .footer-top .footer-logo{height:70px;margin:10px auto 0;}
+  .footer-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:900px;margin:34px auto 0;text-align:left;}
+  .footer-cols h4{font-size:14px;letter-spacing:.5px;color:var(--navy);margin-bottom:14px;}
+  .footer-cols li{margin-bottom:10px;font-size:14px;}
+  .footer-cols a:hover{color:var(--orange);}
+  .footer-social{display:flex;gap:10px;margin:10px 0 18px;}
+  .footer-social a{width:34px;height:34px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;}
+  .footer-social svg{width:15px;height:15px;fill:#fff;}
+  .footer-bottom{border-top:1px solid #e6e2d8;padding:34px 0;text-align:center;}
+  .badge-row{display:flex;justify-content:center;align-items:center;gap:26px;flex-wrap:wrap;margin-bottom:22px;}
+  .badge-row img{height:48px;width:auto;object-fit:contain;}
+  .footer-tagline{font-weight:700;color:var(--navy);font-size:16px;margin-bottom:10px;}
+  .legal{font-size:12px;color:#888;max-width:640px;margin:0 auto;}
+
+  @media(max-width:900px){
+    .split, .events-inner{grid-template-columns:1fr;gap:30px;}
+    .split.reverse .split-media{order:0;}
+    .split-media img{height:280px;}
+    .stats-grid, .news-grid, .film-grid, .partners-grid{grid-template-columns:1fr 1fr;}
+    .cta-grid{grid-template-columns:1fr 1fr;}
+    .footer-cols{grid-template-columns:1fr;text-align:center;}
+    .footer-social{justify-content:center;}
+    .split-copy h1{font-size:32px;}
+  }
+  @media(max-width:600px){
+    .stats-grid, .news-grid, .film-grid, .partners-grid, .cta-grid{grid-template-columns:1fr;}
+    .header-inner{padding:12px 16px;}
+    .logo img{height:44px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="announce">
+  <div class="wrap">
+    <span>School's out — and for many kids, so are school meals. See how you can help close the gap.</span>
+    <a class="btn btn-navy" href="#stats">Learn More</a>
+  </div>
+</div>
+
+<header class="main-header">
+  <div class="header-inner wrap">
+    <a class="logo" href="index.html" aria-label="Food Bank For NYC — home">
+      <img src="https://www.foodbanknyc.org/wp-content/uploads/2025/05/fbnyc-logo.svg" alt="Food Bank For NYC">
+    </a>
+    <div class="header-actions">
+      <button class="icon-btn" aria-label="Search" type="button">
+        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="icon-btn menu-btn" aria-label="Open menu" type="button" onclick="document.getElementById('navPanel').classList.add('open');document.getElementById('navOverlay').classList.add('open');">
+        <svg viewBox="0 0 24 24"><rect y="4" width="24" height="2.5" rx="1.25"/><rect y="11" width="24" height="2.5" rx="1.25"/><rect y="18" width="24" height="2.5" rx="1.25"/></svg>
+      </button>
+      <button class="btn btn-orange" onclick="FundraiseUp('openCheckout')">Donate Now</button>
+    </div>
+  </div>
+</header>
+
+<div class="nav-overlay" id="navOverlay" onclick="document.getElementById('navPanel').classList.remove('open');this.classList.remove('open');"></div>
+<nav class="nav-panel" id="navPanel">
+  <button class="nav-panel-close" aria-label="Close menu" onclick="document.getElementById('navPanel').classList.remove('open');document.getElementById('navOverlay').classList.remove('open');">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
+  </button>
+  <ul class="nav-list">
+    <li><a href="#find-food">Find Food</a></li>
+    <li><a href="#who-we-are">Who We Are</a></li>
+    <li><a href="#what-we-do">What We Do</a></li>
+    <li><a href="#news">News &amp; Stories</a></li>
+    <li><a href="#how-to-help">How to Help</a></li>
+    <li><a href="#ways-to-give">Ways to Give</a></li>
+  </ul>
+  <div class="nav-social">
+    <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.25-1.5 1.55-1.5H16.7V3.7c-.28-.04-1.24-.12-2.36-.12-2.34 0-3.94 1.43-3.94 4.04V10H7.7v3.1h2.7V21h3.1z"/></svg></a>
+    <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c2.7 0 3 0 4.1.06 2.7.12 4 1.44 4.1 4.1.06 1.1.06 1.4.06 4.1s0 3-.06 4.1c-.12 2.65-1.4 4-4.1 4.1-1.1.06-1.4.06-4.1.06s-3 0-4.1-.06c-2.7-.12-4-1.44-4.1-4.1C3.7 13.5 3.7 13.2 3.7 10.5s0-3 .06-4.1c.12-2.66 1.4-4 4.1-4.1C9 2.2 9.3 2.2 12 2.2zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.2-8.4a1.17 1.17 0 1 0 0-2.34 1.17 1.17 0 0 0 0 2.34z"/></svg></a>
+    <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9.5 9H13v1.7h.05c.5-.9 1.7-1.9 3.5-1.9 3.7 0 4.4 2.4 4.4 5.6V21h-4v-5.7c0-1.4 0-3.1-1.9-3.1s-2.2 1.5-2.2 3v5.8h-4V9z"/></svg></a>
+    <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22 12s0-3.2-.4-4.7a2.9 2.9 0 0 0-2-2C17.9 5 12 5 12 5s-5.9 0-7.6.3a2.9 2.9 0 0 0-2 2C2 8.8 2 12 2 12s0 3.2.4 4.7c.2 1 1 1.8 2 2C6.1 19 12 19 12 19s5.9 0 7.6-.3a2.9 2.9 0 0 0 2-2C22 15.2 22 12 22 12zM10 15.4V8.6l6 3.4z"/></svg></a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="split wrap" id="find-food">
+    <div class="split-copy">
+      <span class="cap">Faye, Harlem</span>
+      <h1>FEEDING TODAY.<br>FUELING TOMORROW.</h1>
+      <p>Together, we're working toward a city where every New Yorker has enough to eat.</p>
+    </div>
+    <div class="split-media">
+      <img src="https://www.foodbanknyc.org/wp-content/uploads/2025/07/fbnyc-man-in-front-of-food-distribution.jpg" alt="Volunteer in front of a Food Bank For NYC food distribution">
+    </div>
+  </section>
+
+  <section class="split wrap section-mint">
+    <div class="split-copy">
+      <h2>MORE THAN A MEAL.<br>A LIFELINE.</h2>
+      <p>For more than four decades we've stood with New Yorkers experiencing hunger. Our goal is simple: help every New Yorker reach lasting food security.</p>
+      <button class="btn btn-orange" onclick="FundraiseUp('openCheckout')">Give now</button>
+    </div>
+    <div class="split-media">
+      <img src="https://www.foodbanknyc.org/wp-content/uploads/2025/08/fbnyc-mother-child-groceries-sidewalk.jpg" alt="Mother and child carrying groceries">
+    </div>
+  </section>
+
+  <section class="split wrap reverse" id="who-we-are">
+    <div class="split-copy">
+      <h2>MEET NYC'S LARGEST HUNGER RELIEF ORGANIZATION</h2>
+      <p>Working with close to 800 partner sites across all five boroughs, we provide fresh, culturally familiar food along with the resources people need to become self-sufficient.</p>
+      <a class="btn btn-outline-navy" href="#what-we-do">Explore our work</a>
+    </div>
+    <div class="split-media">
+      <img src="https://www.foodbanknyc.org/wp-content/uploads/2025/08/fbnyc-food-serving-and-education.jpg" alt="Food Bank For NYC staff serving and educating the community">
+    </div>
+  </section>
+
+  <section class="stats-section" id="stats">
+    <div class="wrap">
+      <div class="stats-intro">
+        <span class="eyebrow">Hunger Ends Here — With Us</span>
+        <h2>1.4 million New Yorkers — including 1 in 4 kids — don't have reliable access to food</h2>
+        <p>We're working to change that. Our impact since 1983:</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card" style="background-image:url('https://www.foodbanknyc.org/wp-content/uploads/2025/08/fbnyc-families-with-children-receiving-food-donations-from-local-pantry-2.jpg')">
+          <div class="stat-num">1.6B LBS</div>
+          <div class="stat-label">Of nutritious food delivered</div>
+        </div>
+        <div class="stat-card" style="background-image:url('https://www.foodbanknyc.org/wp-content/uploads/2025/08/fbnyc-father-son-groceries-school-playground.jpg')">
+          <div class="stat-num">100+</div>
+          <div class="stat-label">Types of culturally familiar foods distributed</div>
+        </div>
+        <div class="stat-card" style="background-image:url('https://www.foodbanknyc.org/wp-content/uploads/2025/07/fbnyc-two-females-at-community-kitchen.jpg')">
+          <div class="stat-num">630K+</div>
+          <div class="stat-label">Empowered through nutrition education</div>
+        </div>
+        <div class="stat-card" style="background-image:url('https://www.foodbanknyc.org/wp-content/uploads/2025/08/fbnyc-mother-child-groceries-sidewalk.jpg')">
+          <div class="stat-num">$465M</div>
+          <div class="stat-label">In SNAP benefits secured — about $760M in economic impact for NYC</div>
+        </div>
+        <div class="stat-card" style="background-image:url('https://www.foodbanknyc.org/wp-content/uploads/2025/07/fbnyc-man-in-front-of-food-distribution.jpg')">
+          <div class="stat-num">140K</div>
+          <div class="stat-label">Households received SNAP assistance</div>
+        </div>
+        <div class="stat-card" style="background-image:url('https://www.foodbanknyc.org/wp-content/uploads/2025/08/fbnyc-food-serving-and-education.jpg')">
+          <div class="stat-num">23M+</div>
+          <div class="stat-label">Meals delivered to students and families through Campus Pantry</div>
+        </div>
+      </div>
+      <div class="stats-actions">
+        <a class="btn btn-navy" href="#news">See our impact</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="news-section" id="news">
+    <div class="wrap">
+      <div class="news-head">
+        <span class="eyebrow">News &amp; Updates</span>
+        <h2>REAL NEW YORKERS. REAL STORIES.</h2>
+      </div>
+      <div class="film-grid">
+        <article class="card">
+          <img src="https://www.foodbanknyc.org/wp-content/uploads/2026/06/Jessica-Headshot.webp" alt="Film still">
+          <div class="card-body">
+            <span class="tag-pill">Films</span>
+            <span class="card-date">June 5, 2026</span>
+            <h3>"If They're Hungry, They Can't Focus"</h3>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://www.foodbanknyc.org/wp-content/uploads/2026/06/Jun-5-2026-01_54_48-PM.webp" alt="Film still">
+          <div class="card-body">
+            <span class="tag-pill">Films</span>
+            <span class="card-date">June 5, 2026</span>
+            <h3>"Whatever It Takes So Kids Can Be Kids"</h3>
+          </div>
+        </article>
+      </div>
+      <div class="impact-banner">SEE YOUR IMPACT IN ACTION</div>
+      <div class="news-grid">
+        <article class="card">
+          <img src="https://www.foodbanknyc.org/wp-content/uploads/2026/07/35-scaled.webp" alt="News photo">
+          <div class="card-body">
+            <span class="tag-pill">News</span>
+            <span class="card-date">July 29, 2026</span>
+            <h3>How Over 100 Interns Helped Deliver Thousands of Meals Across NYC</h3>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://www.foodbanknyc.org/wp-content/uploads/2026/07/2-scaled.webp" alt="News photo">
+          <div class="card-body">
+            <span class="tag-pill">News</span>
+            <span class="card-date">July 21, 2026</span>
+            <h3>Morgan Stanley Packed Meals in Times Square. Here's Where They Went Next.</h3>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://www.foodbanknyc.org/wp-content/uploads/2025/07/11.png" alt="News photo">
+          <div class="card-body">
+            <span class="tag-pill">News</span>
+            <span class="card-date">July 20, 2026</span>
+            <h3>Food Bank For NYC, City Harvest and United Way Applaud City Budget's $80 Million Investment in Food Security</h3>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="events-section" id="how-to-help">
+    <div class="wrap events-inner">
+      <div class="events-copy">
+        <span class="eyebrow" style="color:var(--amber)">Turn a Night Out Into Something Greater</span>
+        <h2>From galas to community meetups, every event we host turns time together into meals for NYC.</h2>
+        <a class="btn btn-outline" href="#events">View all events</a>
+      </div>
+      <div class="event-card">
+        <img src="https://www.foodbanknyc.org/wp-content/uploads/2026/08/fbnyc-eat-for-good-dishroom-x-elder.webp" alt="Eat For Good event">
+        <div class="event-card-body">
+          <div class="event-date"><div class="day">13</div><div class="month">OCT</div></div>
+          <div>
+            <h3>Eat For Good</h3>
+            <p>Dishoom x Elder with Arun Kumar &amp; Sujan Sarkar</p>
+            <a class="btn btn-navy" href="#events" style="padding:10px 22px;font-size:13px;">Register Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="partners-section" id="what-we-do">
+    <div class="wrap">
+      <div class="partners-head">
+        <span class="eyebrow">Powered by Trusted Partnerships</span>
+        <h2>Together with our partners, we're building a stronger, hunger-free New York City.</h2>
+      </div>
+      <div class="partners-grid">
+        <a class="partner-card" href="#" style="background-image:url('https://www.foodbanknyc.org/wp-content/uploads/2025/07/fbnyc-corporate-partners-e1760727965916.jpg')">
+          <span>For Corporations &amp; Foundations</span>
+        </a>
+        <a class="partner-card" href="#" style="background-image:url('https://www.foodbanknyc.org/wp-content/uploads/2025/07/fbnyc-two-females-at-community-kitchen.jpg')">
+          <span>For Community Organizations</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" id="ways-to-give">
+    <div class="wrap">
+      <div class="cta-head">
+        <h2>IT TAKES A CITY<br>TO FEED ONE</h2>
+        <p>Find your own way to join the fight against hunger.</p>
+      </div>
+      <div class="cta-grid">
+        <div class="cta-card">
+          <div class="icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16l-1.5 9h-13z"/><circle cx="9" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg></div>
+          <span class="cap">Get Fresh Food</span>
+          <h3>Find Help</h3>
+          <a class="btn btn-outline-navy" href="#find-food">Find Food</a>
+        </div>
+        <div class="cta-card">
+          <div class="icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21c0-4-3.6-6-8-6s-8 2-8 6"/><circle cx="12" cy="8" r="4"/></svg></div>
+          <span class="cap">Make Time for Kindness</span>
+          <h3>Volunteer</h3>
+          <a class="btn btn-outline-navy" href="#">Volunteer</a>
+        </div>
+        <div class="cta-card">
+          <div class="icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16M4 5h13l-2 4 2 4H4"/></svg></div>
+          <span class="cap">Speak Out Against Hunger</span>
+          <h3>Advocate</h3>
+          <a class="btn btn-outline-navy" href="#">Advocate</a>
+        </div>
+        <div class="cta-card">
+          <div class="icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-9.5-8.8C.7 8.8 2.3 5 6 5c2 0 3.4 1 4 2.3.6-1.3 2-2.3 4-2.3 3.7 0 5.3 3.8 3.5 7.2C19 16.6 12 21 12 21z"/></svg></div>
+          <span class="cap">Give So Others Can Eat</span>
+          <h3>Donate</h3>
+          <button class="btn btn-orange" onclick="FundraiseUp('openCheckout')">Donate</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-top wrap">
+    <span class="eyebrow">We're The</span>
+    <img class="footer-logo" src="https://www.foodbanknyc.org/wp-content/uploads/2025/05/food-bank-footer-logo.png" alt="Food Bank For NYC">
+    <div class="footer-cols">
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Store</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Financials &amp; Reports</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Sign In</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get Involved</h4>
+        <ul>
+          <li><a href="#">For Donors</a></li>
+          <li><a href="#">For Volunteers</a></li>
+          <li><a href="#">For Member Agencies</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Let's Connect</h4>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.25-1.5 1.55-1.5H16.7V3.7c-.28-.04-1.24-.12-2.36-.12-2.34 0-3.94 1.43-3.94 4.04V10H7.7v3.1h2.7V21h3.1z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c2.7 0 3 0 4.1.06 2.7.12 4 1.44 4.1 4.1.06 1.1.06 1.4.06 4.1s0 3-.06 4.1c-.12 2.65-1.4 4-4.1 4.1-1.1.06-1.4.06-4.1.06s-3 0-4.1-.06c-2.7-.12-4-1.44-4.1-4.1C3.7 13.5 3.7 13.2 3.7 10.5s0-3 .06-4.1c.12-2.66 1.4-4 4.1-4.1C9 2.2 9.3 2.2 12 2.2zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.2-8.4a1.17 1.17 0 1 0 0-2.34 1.17 1.17 0 0 0 0 2.34z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9.5 9H13v1.7h.05c.5-.9 1.7-1.9 3.5-1.9 3.7 0 4.4 2.4 4.4 5.6V21h-4v-5.7c0-1.4 0-3.1-1.9-3.1s-2.2 1.5-2.2 3v5.8h-4V9z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22 12s0-3.2-.4-4.7a2.9 2.9 0 0 0-2-2C17.9 5 12 5 12 5s-5.9 0-7.6.3a2.9 2.9 0 0 0-2 2C2 8.8 2 12 2 12s0 3.2.4 4.7c.2 1 1 1.8 2 2C6.1 19 12 19 12 19s5.9 0 7.6-.3a2.9 2.9 0 0 0 2-2C22 15.2 22 12 22 12zM10 15.4V8.6l6 3.4z"/></svg></a>
+        </div>
+        <button class="btn btn-orange" style="padding:10px 22px;font-size:13px;" onclick="FundraiseUp('openCheckout')">Donate Now</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom wrap">
+    <div class="badge-row">
+      <img src="https://www.foodbanknyc.org/wp-content/uploads/2025/05/aib_logo.png" alt="America's Best Charities">
+      <img src="https://www.foodbanknyc.org/wp-content/uploads/2026/03/candid-seal-platinum-2026.webp" alt="Candid Platinum Seal">
+      <img src="https://www.foodbanknyc.org/wp-content/uploads/2025/05/Four-Star-Rating-Badge-Full-Color-150x150-1.png" alt="Charity Navigator Four-Star Rating">
+      <img src="https://www.foodbanknyc.org/wp-content/uploads/2025/05/CW_TopRated_RGB_WEB_80px.png" alt="CharityWatch Top Rated">
+      <img src="https://www.foodbanknyc.org/wp-content/uploads/2025/05/aip.png" alt="American Institute of Philanthropy">
+    </div>
+    <p class="footer-tagline">Working to help every New Yorker reach lasting food security.</p>
+    <p class="legal">501(c)(3) nonprofit organization and member of Feeding America. EIN: 13-3179546. Copyright © 2026 All Rights Reserved Food Bank For New York City. This is an unofficial demo page created for illustrative purposes.</p>
+  </div>
+</footer>
+
+</body>
+</html>
