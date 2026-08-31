@@ -6,6 +6,23 @@
 <title>Solidarity Bridge</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<!-- Fundraise Up: the new standard for online giving -->
+<script>
+    (function (w, d, s, n, a) {
+        if (!w[n]) {
+            var l = 'call,catch,on,once,set,then,track,openCheckout'
+                .split(','), i, o = function (n) {
+                    return 'function' == typeof n ? o.l.push([arguments]) && o
+                        : function () { return o.l.push([n, arguments]) && o }
+                }, t = d.getElementsByTagName(s)[0],
+                j = d.createElement(s); j.async = !0; j.src = 'https://cdn.fundraiseup.com/widget/' + a + '';
+            t.parentNode.insertBefore(j, t); o.s = Date.now(); o.v = 5; o.h = w.location.href; o.l = [];
+            for (i = 0; i < 8; i++)o[l[i]] = o(l[i]); w[n] = o
+        }
+    })(window, document, 'script', 'FundraiseUp', 'AXMHWWZK');
+    window.fundraiseup_livemode = false;
+</script>
+<!-- End Fundraise Up -->
 <style>
   :root{
     --gold:#f7b733;
@@ -36,10 +53,6 @@
   nav.primary-nav > ul > li{position:relative;}
   nav.primary-nav > ul > li > a{font-size:13px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--charcoal);padding:8px 0;display:block;}
   nav.primary-nav > ul > li:hover > a{color:var(--teal-dark);}
-  .dropdown{display:none;position:absolute;top:100%;left:0;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.12);min-width:230px;padding:10px 0;border-radius:2px;}
-  nav.primary-nav > ul > li:hover .dropdown{display:block;}
-  .dropdown a{display:block;padding:9px 20px;font-size:13px;color:var(--charcoal);white-space:nowrap;}
-  .dropdown a:hover{background:var(--cream);color:var(--maroon);}
   .btn-donate-nav{background:var(--gold);color:var(--charcoal);font-weight:800;font-size:13px;letter-spacing:.05em;padding:12px 26px;border-radius:2px;text-transform:uppercase;}
   .btn-donate-nav:hover{background:var(--gold-dark);}
 
@@ -133,44 +146,11 @@
     <a class="logo" href="index.html"><img src="https://images.squarespace-cdn.com/content/v1/68af914ea0a5a046cf93dc6a/1756336708067-EH64NK7B95XX1LHERKDD/new-logo.png" alt="Solidarity Bridge"></a>
     <nav class="primary-nav">
       <ul>
-        <li><a href="#">About Us</a>
-          <div class="dropdown">
-            <a href="#">Model &amp; Values</a>
-            <a href="#">History</a>
-            <a href="#">Leadership</a>
-            <a href="#">Financials</a>
-          </div>
-        </li>
-        <li><a href="#">What We Do</a>
-          <div class="dropdown">
-            <a href="#">General Surgery</a>
-            <a href="#">Heart Surgery</a>
-            <a href="#">Gynecologic Surgery</a>
-            <a href="#">Neurosurgery &amp; Neurology Institute</a>
-            <a href="#">Medical Equipping</a>
-          </div>
-        </li>
-        <li><a href="#">Our Stories</a>
-          <div class="dropdown">
-            <a href="#">Blog</a>
-            <a href="#">Videos</a>
-            <a href="#">In the news</a>
-          </div>
-        </li>
-        <li><a href="#">Get Involved</a>
-          <div class="dropdown">
-            <a href="#">Volunteer</a>
-            <a href="#">Connect your parish</a>
-            <a href="#">Donate medical supplies</a>
-          </div>
-        </li>
-        <li><a href="#">Events &amp; Trips</a>
-          <div class="dropdown">
-            <a href="#">Trip calendar</a>
-            <a href="#">Fiesta Gala 2027</a>
-            <a href="ways-to-give/index.html">Ways to give</a>
-          </div>
-        </li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">What We Do</a></li>
+        <li><a href="#">Our Stories</a></li>
+        <li><a href="#">Get Involved</a></li>
+        <li><a href="#">Events &amp; Trips</a></li>
         <li><a href="ways-to-give/index.html">Ways to Give</a></li>
       </ul>
       <a class="btn-donate-nav" href="ways-to-give/index.html">Donate</a>
