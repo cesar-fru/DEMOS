@@ -237,22 +237,16 @@
             gap: 28px;
             padding: 22px 4px;
             border-bottom: 1px solid var(--line);
-            text-decoration: none;
             color: inherit;
             border-left: 3px solid transparent;
             transition: border-left-color .15s ease, background-color .15s ease, padding-left .15s ease;
         }
 
         .demo-row:hover,
-        .demo-row:focus-visible {
+        .demo-row:focus-within {
             border-left-color: var(--green);
             background: var(--mist);
             padding-left: 16px;
-        }
-
-        .demo-row:focus-visible {
-            outline: 2px solid var(--green);
-            outline-offset: -2px;
         }
 
         .demo-tag {
@@ -280,17 +274,38 @@
             max-width: 56ch;
         }
 
-        .demo-go {
+        .demo-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        .demo-link {
             font-size: 13.5px;
             font-weight: 600;
             color: var(--gray-soft);
+            text-decoration: none;
             display: flex;
             align-items: center;
             gap: 6px;
             white-space: nowrap;
+            border-bottom: 1px solid transparent;
+            transition: color .15s ease, border-color .15s ease;
         }
 
-        .demo-go svg {
+        .demo-link:hover,
+        .demo-link:focus-visible {
+            color: var(--green-deep);
+            border-bottom-color: var(--green-deep);
+        }
+
+        .demo-link:focus-visible {
+            outline: 2px solid var(--green);
+            outline-offset: 3px;
+        }
+
+        .demo-link--primary svg {
             width: 14px;
             height: 14px;
             opacity: 0;
@@ -298,15 +313,15 @@
             transition: opacity .15s ease, transform .15s ease;
         }
 
-        .demo-row:hover .demo-go svg,
-        .demo-row:focus-visible .demo-go svg {
+        .demo-row:hover .demo-link--primary svg,
+        .demo-row:focus-within .demo-link--primary svg {
             opacity: 1;
             transform: translateX(0);
         }
 
-        .demo-row:hover .demo-go,
-        .demo-row:focus-visible .demo-go {
-            color: var(--green-deep);
+        .demo-link--secondary {
+            color: var(--gray-soft);
+            font-weight: 500;
         }
 
         /* ---------- Footer ---------- */
@@ -358,8 +373,10 @@
                 justify-self: start;
             }
 
-            .demo-go {
-                justify-self: start;
+            .demo-actions {
+                align-items: flex-start;
+                flex-direction: row;
+                gap: 22px;
             }
 
             .banner-copy {
@@ -374,7 +391,7 @@
         @media (prefers-reduced-motion: reduce) {
 
             .demo-row,
-            .demo-go svg {
+            .demo-link--primary svg {
                 transition: none;
             }
         }
@@ -392,7 +409,7 @@
 
     <div class="banner">
         <div class="banner-frame">
-            <img src="assets/banner.jpg"
+            <img src="assets/FrunBG-1.jpeg"
                 alt="An illustrated mascot wearing sunglasses works at a cluttered, sunlit desk with two monitors and sticky notes.">
             <div class="banner-scrim"></div>
             <div class="banner-copy">
@@ -413,22 +430,26 @@
     <main class="directory" id="directory">
         <div class="directory-head">
             <h3>Demo pages</h3>
-            <span id>04 listed</span>
+            <span>04 listed</span>
         </div>
 
-        <a class="demo-row" href="./solidarity-bridge">
+        <div class="demo-row">
             <span class="demo-tag">01</span>
             <span class="demo-info">
-                <h4>Solidarity Bridge</h4>
+                <h4>North Texas Foodbank</h4>                
             </span>
-            <span class="demo-go">Open demo
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                </svg>
+            <span class="demo-actions">
+                <a class="demo-link demo-link--primary" href="north-texas-foodbank/index.html">Go to demo
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                </a>
+                <a class="demo-link demo-link--secondary" href="north-texas-foodbank/prepare-for-demo/north-texas-foodbank-branding-kit.pdf">Open branding kit</a>
             </span>
-        </a>
+        </div>
+
     </main>
 
     <footer>
